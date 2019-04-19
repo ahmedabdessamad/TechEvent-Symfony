@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Archives list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Anas</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for archive in archives %}
+            <tr>
+                <td><a href="{{ path('archive_show', { 'id': archive.id }) }}">{{ archive.id }}</a></td>
+                <td>{{ archive.anas }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('archive_show', { 'id': archive.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

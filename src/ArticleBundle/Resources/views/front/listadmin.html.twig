@@ -1,0 +1,94 @@
+{% extends 'adminbase.html.twig' %}
+{% block content %}
+    <style>
+        .tableau {
+            width:100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+        .tableau caption {
+            font-size:1.4rem;
+            color:#ffffff;
+            background-color: #5d625c;
+            /* caption-side: bottom; // top|bottom|initial|inherit; */
+        }
+        .tableau th {
+            background-color:#999690;
+            color:#fff;
+        }
+        .tableau tfoot td {
+            color:#fff;
+            background-color:#999690;
+            border-top:1px solid #5d625c;
+            border-bottom:1px solid #5d625c;
+        }
+        .zebre tbody tr:nth-child(odd) {
+            background-color: #d6d3ce;
+            border-bottom:1px solid #ccc;
+            color:#444;
+        }
+        .zebre tbody tr:nth-child(even) {
+            background-color: #c6c3bd;
+            border-bottom:1px solid #ccc;
+            color:#444;
+        }
+        .zebre tbody tr:hover:nth-child(odd) {
+            background-color: #999690;
+            color:#ffffff;
+        }
+        .zebre tbody tr:hover:nth-child(even) {
+            background-color: #999690;
+            color:#ffffff;
+        }
+
+        /* La couleur ne fonctionne pas avec odd / even */
+        .tableau col:nth-child(1) {
+            background-color:#d6d3ce;
+        }
+        .tableau col:nth-child(2) {
+            background-color:#dddad4;width:100px;text-align:right;
+        }
+        .tableau col:nth-child(3) {
+            background-color:#c6c3bd;color:#fff;width:100px;text-align:right;
+        }
+
+        .tableau td:nth-child(2) {
+            text-align:right;
+        }
+        .tableau td:nth-child(3) {
+            text-align:right;
+        }
+    </style>
+    <table  class="tableau zebre" border="4" width="100%" bordercolor="#808080" frame="hsides" rules="rows" >
+        <tbody>
+        <tr>
+            <td> <center>Titre</center></td>
+            <td> <center>Description</center></td>
+            <td><center>Date</center></td>
+            <td><center>Image</center></td>
+            <td>    </td>
+            <td>    </td>
+            <td>    </td>
+
+
+
+        </tr>
+        </tbody>
+        {% for posts in posts%}
+            <tbody>
+            <tr>
+
+
+                <td><center> {{ posts.titre }}</center></td>
+                <td><center> {{ posts.description|trim }}</center></td>
+                <td><center>{{ posts.heurepubl|date() }}</center></td>
+                <td><center><img class="img-fluid" src="{{ asset('uploads/post/' ~ posts.photo) }}" alt=""></a></center></td>
+                <td> <a href="{{ path('update_post',{'id': posts.id}) }}"><button type="button" class="btn btn-sm btn-outline-info">Update</button></a>  </td>
+                <td>  <a href="{{ path('delete_post',{'id': posts.id}) }}"><button type="button" class="btn btn-sm btn-outline-danger">Delete</button></a></td>
+                <td> <a href="{{ path('detailed_post',{'id': posts.id}) }}"><button type="button" class="btn btn-sm btn-outline-primary">View</button></a></td>
+            </tr>
+            </tbody>
+
+        {% endfor %}
+    </table>
+{% endblock %}

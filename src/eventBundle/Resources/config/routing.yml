@@ -1,0 +1,79 @@
+event_interesser:
+    resource: "@eventBundle/Resources/config/routing/interesser.yml"
+    prefix:   /interesser
+
+event_homepage:
+    path:     /
+    defaults: { _controller: eventBundle:Default:home}
+event:
+    path:     /event
+    defaults: { _controller: eventBundle:Default:Ajouter }
+allevent:
+    path:     /allevent
+    defaults: { _controller: eventBundle:Default:allevent }
+AffEvent:
+    path:     /allevent/{id}/{cat}
+    defaults: { _controller: eventBundle:Default:AffEvent }
+Alleventclub:
+    path:     /alleventclub/{id}
+    defaults: { _controller: eventBundle:Default:AllEventClub }
+AffEventClub:
+    path:     /eventclub/{id}
+    defaults: { _controller: eventBundle:Default:AffEventClub }
+DeleteEvent:
+    path:     /deleteevent/{id}
+    defaults: { _controller: eventBundle:Default:DeleteEvent }
+EditEvent:
+    path:     /EditEvent/{id}
+    defaults: { _controller: eventBundle:Default:EditEvent }
+Ajouterevent:
+    path:     /Ajouterevent
+    defaults: { _controller: eventBundle:Default:AjouterEvent }
+Ajouterintersser:
+    path:     /Ajouterinterreser/{id}
+    defaults: { _controller: eventBundle:Default:Intersser }
+Allinetereser:
+    path:     /allinteresser
+    defaults: { _controller: eventBundle:Default:Allinteresser }
+DeleteEventinteresser:
+    path:     /DeleteEventinteresser/{id}
+    defaults: { _controller: eventBundle:Default:DeleteEventinteresser }
+tbyprixdesc:
+    path:     /Alleventbyprixdesc
+    defaults: { _controller: eventBundle:Default:AllEventbyprixdesc }
+tbyprixdasec:
+    path:     /Alleventbyprixasec
+    defaults: { _controller: eventBundle:Default:AllEventbyprixasec }
+recherche:
+    path:     /recherche
+    defaults: { _controller: eventBundle:Default:recherche }
+rechercheprix:
+    path:     /recherchedate
+    defaults: { _controller: eventBundle:Default:recherchedate }
+recupereevent:
+    path:     /recupereevent/{id}
+    defaults: { _controller: eventBundle:Default:recupereEvent }
+modifierevent:
+    path:     /modifierevent/{id}
+    defaults: { _controller: eventBundle:Default:Mofidierevent }
+allusersinteresser:
+    path:     /allusersinteresser/{id}
+    defaults: { _controller: eventBundle:Default:allusersinteresser }
+mail:
+    path:     /Mail/{email}/{nom}/{nomevent}/{date}/{id}
+    defaults: { _controller: eventBundle:Default:sendMail }
+eventadmin:
+    path:     /eventadmin
+    defaults: { _controller: eventBundle:Default:Eventadmin }
+accepterevent:
+    path:     /accepterevent/{id}
+    defaults: { _controller: eventBundle:Default:accepterevent }
+refuserevent:
+    path:     /refuserevent/{id}
+    defaults: { _controller: eventBundle:Default:refuserevent }
+home:
+    path:     /home
+    defaults: { _controller: eventBundle:Default:home }
+
+
+

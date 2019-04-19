@@ -1,0 +1,55 @@
+Speaker:
+    type: entity
+    table: speaker
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        prenom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        tel:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        email:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        address:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        cv:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        photo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

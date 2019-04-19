@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<div class="offcanvas-wrapper">
+    <!-- Page Content-->
+    <!-- Main Slider-->
+    <section class="hero-slider" style="background-image: url(img/hero-slider/main-bg.jpg);">
+        <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
+            <div class="item">
+                <div class="container padding-top-3x">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
+                            <div class="from-bottom"><img class="d-inline-block w-150 mb-4" >
+                                <div class="h2 text-body text-normal mb-2 pt-1">Blockchain Summit</div>
+                                <div class="h2 text-body text-normal mb-4 pb-1"> Prix : <span class="text-bold">50 dinars</span></div>
+                            </div><a class="btn btn-primary scale-up delay-1" href="shop-grid-ls.html">affiche Event</a>
+                        </div>
+                        <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src ="{{ asset('img/hero-slider/event1.png') }}" alt="Puma Backpack"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container padding-top-3x">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
+                            <div class="from-bottom"><img class="d-inline-block w-200 mb-4" >
+                                <div class="h2 text-body text-normal mb-2 pt-1">Digital Marketing</div>
+                                <div class="h2 text-body text-normal mb-4 pb-1">prix <span class="text-bold">70 dinars</span></div>
+                            </div><a class="btn btn-primary scale-up delay-1" href="shop-single.html">Affiche Event</a>
+                        </div>
+                        <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src ="{{ asset('img/hero-slider/event2.jpg') }}" alt="Chuck Taylor All Star II"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container padding-top-3x">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
+                            <div class="from-bottom"><img class="d-inline-block mb-4" style="width: 125px;" >
+                                <div class="h2 text-body text-normal mb-2 pt-1"> BIG DATA DAY</div>
+                                <div class="h2 text-body text-normal mb-4 pb-1">prix <span class="text-bold">15 dinars</span></div>
+                            </div><a class="btn btn-primary scale-up delay-1" href="shop-single.html">Afficher Event</a>
+                        </div>
+                        <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src ="{{ asset('img/hero-slider/event3.jpg') }}" alt="Moto 360"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Promo #1-->
+    <section class="container-fluid padding-top-3x">
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 mb-30">
+                <div class="rounded bg-faded position-relative padding-top-3x padding-bottom-3x"><span class="product-badge text-danger" style="top: 24px; left: 24px;">Limited Offer</span>
+                    <div class="text-center">
+                        <h3 class="h2 text-normal mb-1">Offer</h3>
+                        <h2 class="display-2 text-bold mb-2">Remise 10%</h2>
+                        <h4 class="h3 text-normal mb-4">delais :</h4>
+                        <div class="countdown mb-3" data-date-time="5/30/2019 12:00:00">
+                            <div class="item">
+                                <div class="days">00</div><span class="days_ref">Days</span>
+                            </div>
+                            <div class="item">
+                                <div class="hours">00</div><span class="hours_ref">Hours</span>
+                            </div>
+                            <div class="item">
+                                <div class="minutes">00</div><span class="minutes_ref">Mins</span>
+                            </div>
+                            <div class="item">
+                                <div class="seconds">00</div><span class="seconds_ref">Secs</span>
+                            </div>
+                        </div><br><a class="btn btn-primary margin-bottom-none" href="#">Afficher les Event</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-6 mb-30" style="min-height: 270px;">
+                <div class="img-cover rounded" style="background-image: url(img/banners/home01.jpg);"></div>
+            </div>
+        </div>
+    </section>
+    <!-- Promo #2-->
+    <section class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12">
+                <div class="fw-section rounded padding-top-4x padding-bottom-4x" style="background-image: url({{ asset('img/banners/home01.jpg') }});"><span class="overlay rounded" style="opacity: .35;"></span>
+                    <div class="text-center">
+                        <h3 class="display-4 text-normal text-white text-shadow mb-1">Bienvenue</h3>
+                        <h2 class="display-2 text-bold text-white text-shadow">Crewtivity</h2>
+                        <h4 class="d-inline-block h2 text-normal text-white text-shadow border-default border-left-0 border-right-0 mb-4">3aslema</h4><br><a class="btn btn-primary margin-bottom-none" href="contacts.html">Contacter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Featured Products Carousel-->
+
+    <!-- Product Widgets-->
+    {% endblock %}

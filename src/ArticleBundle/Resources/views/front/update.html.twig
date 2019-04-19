@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="container">
+        <br><br>
+        <center>
+
+            <h3>Ajouter votre Article</h3>
+
+            <div class="well">
+
+
+                {{ form_start(form,{'attr':{'class':'form-horizental'}}) }}
+                <br>
+                {{ form_row(form.titre,{'attr':{'class':'form-control'}}) }}
+                <br>
+                {{ form_row(form.Description,{'attr':{'class':'form-control'}}) }}
+                <br>
+                {{ form_row(form.Photo,{'attr':{'class':'form-control'}}) }}
+                <br>
+                {{ form_row(form.Categorie,{'attr':{'class':'form-control'}}) }}
+                <br><br>
+                {{ form_row(form.Publier,{'attr':{'class':'form-control'}}) }}
+
+                {{ form_end(form) }}
+            </div>
+    </div>
+    </center>
+{% endblock %}

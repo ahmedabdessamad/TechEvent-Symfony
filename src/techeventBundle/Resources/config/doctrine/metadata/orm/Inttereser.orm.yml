@@ -1,0 +1,33 @@
+Inttereser:
+    type: entity
+    table: inttereser
+    indexes:
+        IDX_4D010524A76ED395:
+            columns:
+                - user_id
+        IDX_4D01052471F7E88B:
+            columns:
+                - event_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: user_id
+        eventId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: event_id
+    lifecycleCallbacks: {  }

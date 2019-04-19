@@ -1,0 +1,191 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+    #wrapper {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .rating {
+      transform: rotateY(180deg);
+      display: flex;
+    }
+    .rating input {
+      display: none;
+    }
+    .rating label {
+      margin: 25px 0;
+      position: relative;
+      display: block;
+      color: #101010;
+      width: 0px;
+      height: 0px;
+      cursor: pointer;
+      border-right: 30px solid transparent;
+      border-bottom: 20px solid #010101;
+      border-left: 30px solid transparent;
+      transform: rotate(35deg);
+      transition: .5s;
+    }
+    .rating label:before {
+      content: '';
+      border-bottom: 30px solid #010101;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      position: absolute;
+      height: 0;
+      width: 0;
+      top: -18px;
+      left: -23px;
+      display: block;
+      transform: rotate(-35deg);
+      transition: .5s;
+    }
+    .rating label:after {
+      content: '';
+      position: absolute;
+      display: block;
+      color: #010101;
+      top: 3px;
+      left: -35px;
+      width: 0px;
+      height: 0px;
+      border-right: 30px solid transparent;
+      border-bottom: 20px solid #010101;
+      border-left: 30px solid transparent;
+      transform: rotate(-70deg);
+      transition: .5s;
+    }
+    .rating label:hover,
+    .rating input:checked ~ label {
+      color: #fc0;
+      border-bottom: 20px solid #fc0;
+    }
+    .rating label:hover:after,
+    .rating input:checked ~ label:after {
+      border-bottom:20px solid #fc0;
+    }
+    .rating label:hover:before,
+    .rating input:checked ~ label:before {
+      color: #fc0;
+      border-bottom: 30px solid #fc0;
+    }
+    #seletedVal{
+      width: 100%;
+      display: block;
+      clear: both;
+      text-align: center;
+      font-size: 30px;
+    }
+    #seletedVal:empty {
+      display: none;
+    }
+  </style>
+      <!-- Page Content-->
+      <div class="container padding-bottom-3x mb-2">
+        <div class="row">
+          <div class="col-lg-4">
+            <aside class="user-info-wrapper">
+              <div class="user-cover" style="background-image: url(img/account/user-cover-img.jpg);">
+                <div class="info-label" data-toggle="tooltip" title="You currently have 290 Reward Points to spend"><i class="icon-medal"></i>290 points</div>
+              </div>
+              <div class="user-info">
+                <div class="user-avatar"><a class="edit-avatar" href="#"></a><img src="img/account/user-ava.jpg" alt="User"></div>
+                <div class="user-data">
+                  <h4>{{app.user.username  }}</h4><span>Joined February 06, 2017</span>
+                </div>
+              </div>
+            </aside>
+            <nav class="list-group"><a class="list-group-item with-badge" href="account-orders.html"><i class="icon-bag"></i>Orders<span class="badge badge-primary badge-pill">6</span></a><a class="list-group-item" href="account-profile.html"><i class="icon-head"></i>Profile</a><a class="list-group-item" href="account-address.html"><i class="icon-map"></i>Addresses</a><a class="list-group-item with-badge" href="account-wishlist.html"><i class="icon-heart"></i>Wishlist<span class="badge badge-primary badge-pill">3</span></a><a class="list-group-item with-badge active" href="account-tickets.html"><i class="icon-tag"></i>My Tickets<span class="badge badge-primary badge-pill">4</span></a></nav>
+          </div>
+          <div class="col-lg-8">
+            <div class="padding-top-2x mt-2 hidden-lg-up"></div>
+            <div class="table-responsive margin-bottom-2x">
+              <table class="table margin-bottom-none">
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>Date Submitted</th>
+                    <th>Type</th>
+                    <th>seat</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ reservation.id }}</td>
+                    <td>{{reservation.datereservation|date('Y-m-d')}}</td>
+                    <td><span class="text-warning">{{ reservation.type }}</span></td>
+                    <td><span class="text-primary">{{ reservation.seat }}</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- Messages-->
+            <div class="comment">
+              <div class="comment-body">
+                <p class="comment-text">{% if avis is not null %}{{ avis.review }}{% endif %}</p>
+                <div class="comment-footer"><span class="comment-meta">{{app.user.username  }}</span></div>
+              </div>
+            </div>
+
+            <!-- Reply Form-->
+            <h5 class="mb-30 padding-top-1x">Leave Message</h5>
+            <form method="post" action="{{ path('ajoutavis') }}">
+              <div class="form-group">
+                <textarea name="review" class="form-control form-control-rounded" id="review_text" rows="8" placeholder="Write your message here..." required></textarea>
+              </div>
+              <div class="text-right">
+                  <!----- star rating ---->
+                <div id="wrapper">
+                  <p id="seletedVal" name="seletedVal"></p>
+                  <div class="rating" onclick="getValue()">
+                    <input  id="stars" name="stars" >
+                    <input  name="idres" value={{ reservation.id }}>
+                    <input id="choix" name="choix">
+                    <input type="radio" name="star" id="star5" value="5"><label for="star5"></label>
+                    <input type="radio" name="star" id="star4" value="4"><label for="star4"></label>
+                    <input type="radio" name="star" id="star3" value="3"><label for="star3"></label>
+                    <input type="radio" name="star" id="star2" value="2"><label for="star2"></label>
+                    <input type="radio" name="star" id="star1" value="1"><label for="star1"></label>
+                  </div>
+                </div>
+                  <!----- star rating ---->
+           {%  if avis is null%}
+             <button class="btn btn-outline-primary" type="submit" onclick="setAjout()">Ajouter Avis</button>
+           {% endif %}
+                {%  if avis is not null%}
+                  <button class="btn btn-outline-primary" type="submit" onclick="setModif()">Modifier Avis</button>
+                  <button class="btn btn-outline-primary" type="submit" onclick="setDelete()">Supprimer Avis</button>
+                {% endif %}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  <script>
+    getAns = document.querySelector('input[name=star]:checked').value;
+    document.getElementById("stars").value = getAns;
+    function getValue(){
+      var getAns = "";
+      getAns = document.querySelector('input[name=star]:checked').value;
+      document.getElementById("seletedVal").innerHTML = getAns;
+    }
+    function setAjout() {
+      document.getElementById("choix").value = 1;
+    }
+    function setModif() {
+      document.getElementById("choix").value = 2;
+    }
+    function setDelete() {
+      document.getElementById("choix").value = 3;
+    }
+
+  </script>
+{% endblock %}

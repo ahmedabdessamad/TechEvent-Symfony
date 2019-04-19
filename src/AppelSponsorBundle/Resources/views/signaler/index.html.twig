@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Signalers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Sponsor</th>
+                <th>Club</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for signaler in signalers %}
+            <tr>
+                <td><a href="{{ path('signaler_show', { 'id': signaler.id }) }}">{{ signaler.id }}</a></td>
+                <td>{{ signaler.sponsor }}</td>
+                <td>{{ signaler.club }}</td>
+                <td>{{ signaler.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('signaler_show', { 'id': signaler.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('signaler_edit', { 'id': signaler.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('signaler_new') }}">Create a new signaler</a>
+        </li>
+    </ul>
+{% endblock %}

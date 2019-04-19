@@ -1,0 +1,24 @@
+appelsponsor_index:
+    path:     /
+    defaults: { _controller: "AppelSponsorBundle:AppelSponsor:index" }
+    methods:  GET
+
+appelsponsor_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppelSponsorBundle:AppelSponsor:show" }
+    methods:  GET
+
+appelsponsor_new:
+    path:     /new
+    defaults: { _controller: "AppelSponsorBundle:AppelSponsor:new" }
+    methods:  [GET, POST]
+
+appelsponsor_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppelSponsorBundle:AppelSponsor:edit" }
+    methods:  [GET, POST]
+
+appelsponsor_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppelSponsorBundle:AppelSponsor:delete" }
+    methods:  DELETE

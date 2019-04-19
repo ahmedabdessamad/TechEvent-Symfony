@@ -1,0 +1,209 @@
+{% extends 'clubbase.html.twig' %}
+{% block content %}
+
+    <div class="page-title">
+        <div class="container">
+            <div class="column">
+                <h1>{{ event.titre }}</h1>
+            </div>
+            <div class="column">
+                <ul class="breadcrumbs">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li class="separator">&nbsp;</li>
+                    <li><a >Tout Les Event</a>
+                    </li>
+                    <li class="separator">&nbsp;</li>
+                    <li>Event </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Page Content-->
+    <div class="container padding-bottom-3x mb-1">
+        <div class="row">
+            <!-- Poduct Gallery-->
+            <div class="col-md-6">
+                <div class="product-gallery">
+                    <div class="gallery-wrapper">
+                    </div>
+                    <div class="product-carousel owl-carousel gallery-wrapper">
+                        <div class="gallery-item" data-hash="one"><a href="img/shop/single/01.jpg" data-size="1000x667"><img src="{{ asset('img/event/' ~ event.affiche) }}"  alt =""></a></div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- Product Info-->
+            <div class="col-md-6">
+                <div class="padding-top-2x mt-2 hidden-md-up"></div>
+                <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>
+                </div>
+                <h2 class="padding-top-1x text-normal">{{ event.titre }}</h2><span class="h2 d-block">
+              {{ event.prix}} dinar </span>
+                <div class="pt-1 mb-2"><span class="text-medium"> Description :</span> {{ event.description }}</div>
+
+                <div class="row margin-top-1x">
+                    <div class="col-sm-4">
+
+                    </div>
+
+
+                </div>
+                <div class="pt-1 mb-2"><span class="text-medium"> Date:</span> {{ event.dateevent }}</div>
+                <div class="pt-1 mb-2"><span class="text-medium"> Localisation:</span> {{ event.localisation }}</div>
+                <div class="pt-1 mb-2"><span class="text-medium"> Nombre de Place :</span> {{ event.nbrplaces }}</div>
+
+                <div class="pt-1 mb-2"><span class="text-medium">Heure de Début :</span> {{ event.hdebut }}</div>
+                <div class="pt-1 mb-2"><span class="text-medium">Heure de Fin :</span> {{ event.hfin }}</div>
+                <div class="pt-1 mb-2"><span class="text-medium">Categories :</span> {{ event.categorie }}</div>
+                <div class="pt-1 mb-2"><span class="text-medium">Type :</span> {{ event.type }}</div>
+
+                <button class="btn btn-success" data-toast data-toast-type="danger" data-toast-position="topRight"  ><a href={{ path ('Alleventclub',{'id': 1 } ) }}>Mes Events</a> </button>
+                <button class="btn btn-warning" data-toast data-toast-type="danger" data-toast-position="topRight" ><a href={{ path ('recupereevent',{'id': event.id } ) }}>Modifier</a></button>
+                <button class="btn btn-danger" data-toast data-toast-type="danger" data-toast-position="topRight" ><a href={{ path ('DeleteEvent',{'id': event.id} ) }}>Supprimer</a></button>
+                <hr class="mb-3">
+                <div class="d-flex flex-wrap justify-content-between">
+                    <div class="entry-share mt-2 mb-2"><span class="text-muted">Share:</span>
+                        <div class="share-links"><a class="social-button shape-circle sb-facebook" href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a><a class="social-button shape-circle sb-twitter" href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="socicon-twitter"></i></a><a class="social-button shape-circle sb-instagram" href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="socicon-instagram"></i></a><a class="social-button shape-circle sb-google-plus" href="#" data-toggle="tooltip" data-placement="top" title="Google +"><i class="socicon-googleplus"></i></a></div>
+
+                    </div>
+                    <div class="sp-buttons mt-2 mb-2">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Tabs-->
+        <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">Les information concernant le Sponsor</h3>
+
+        <div class="row padding-top-3x mb-3">
+            <div class="col-lg-10 offset-lg-1">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item"><a class="nav-link active" href="#description" data-toggle="tab" role="tab">Description</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel">
+                        <p>{{ event.description}}</p>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <dl>
+                                    <dt>description Silver :</dt>
+                                    <dd>{{ event.psilver }}</dd>
+                                    <dt>description gold :</dt>
+                                    <dd>{{ event.pglod}}</dd>
+                                    <dt> description Diamond</dt>
+                                    <dd>{{ event.pdiamond}}</dd>
+                                </dl>
+                            </div>
+                            <div class="col-sm-6">
+                                <dl>
+                                    <dt>Prix Silver :</dt>
+                                    <dd>{{ event.prixsilver}} dinar </dd>
+                                    <dt>Prix Gold :</dt>
+                                    <dd>{{ event.prixgold }} dinar </dd>
+                                    <dt>Prix Diamond :</dt>
+                                    <dd>{{ event.prixdiamond}} dinar</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="reviews" role="tabpanel">
+                        <!-- Review-->
+                        <div class="comment">
+                            <div class="comment-author-ava"><img src="img/reviews/01.jpg" alt="Review author"></div>
+                            <div class="comment-body">
+                                <div class="comment-header d-flex flex-wrap justify-content-between">
+                                    <h4 class="comment-title">Average quality for the price</h4>
+                                    <div class="mb-2">
+                                        <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i><i class="icon-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-footer"><span class="comment-meta">Francis Burton</span></div>
+                            </div>
+                        </div>
+                        <!-- Review-->
+                        <div class="comment">
+                            <div class="comment-author-ava"><img src="img/reviews/02.jpg" alt="Review author"></div>
+                            <div class="comment-body">
+                                <div class="comment-header d-flex flex-wrap justify-content-between">
+                                    <h4 class="comment-title">My husband love his new...</h4>
+                                    <div class="mb-2">
+                                        <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <div class="comment-footer"><span class="comment-meta">Maggie Scott</span></div>
+                            </div>
+                        </div>
+                        <!-- Review-->
+                        <div class="comment">
+                            <div class="comment-author-ava"><img src="img/reviews/03.jpg" alt="Review author"></div>
+                            <div class="comment-body">
+                                <div class="comment-header d-flex flex-wrap justify-content-between">
+                                    <h4 class="comment-title">Soft, comfortable, quite durable...</h4>
+                                    <div class="mb-2">
+                                        <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="comment-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                                <div class="comment-footer"><span class="comment-meta">Jacob Hammond</span></div>
+                            </div>
+                        </div>
+                        <!-- Review Form-->
+                        <h5 class="mb-30 padding-top-1x">Leave Review</h5>
+                        <form class="row" method="post">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="review_name">Your Name</label>
+                                    <input class="form-control form-control-rounded" type="text" id="review_name" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="review_email">Your Email</label>
+                                    <input class="form-control form-control-rounded" type="email" id="review_email" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="review_subject">Subject</label>
+                                    <input class="form-control form-control-rounded" type="text" id="review_subject" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="review_rating">Rating</label>
+                                    <select class="form-control form-control-rounded" id="review_rating">
+                                        <option>5 Stars</option>
+                                        <option>4 Stars</option>
+                                        <option>3 Stars</option>
+                                        <option>2 Stars</option>
+                                        <option>1 Star</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="review_text">Review </label>
+                                    <textarea class="form-control form-control-rounded" id="review_text" rows="8" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 text-right">
+                                <button class="btn btn-outline-primary" type="submit">Submit Review</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+    </div>
+{% endblock %}

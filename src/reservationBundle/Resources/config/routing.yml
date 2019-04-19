@@ -1,0 +1,52 @@
+reservation_homepage:
+    path:     /reservation
+    defaults: { _controller: reservationBundle:Default:index }
+ajout:
+    path:     /ajout/{id}/{iduser}
+    defaults: { _controller: reservationBundle:Default:AjoutReservation }
+
+affichage:
+    path:     /afficherPanier/{iduser}
+    defaults: { _controller: reservationBundle:Default:afficherPanier }
+
+supprimerReservation:
+    path:     /supprimerReservation/{idReservation}
+    defaults: { _controller: reservationBundle:Default:SupprimerReservation }
+
+modifierReservation:
+    path:     /modifierReservation/{idReservation}/{quantite}
+    defaults: { _controller: reservationBundle:Default:modifierReservation }
+viderPanierReservation:
+    path:     /viderPanier
+    defaults: { _controller: reservationBundle:Default:viderPanier }
+ajax_search:
+    path:     /ajax/demands
+    defaults: { _controller: reservationBundle:Default:ajax }
+afficherSalle:
+    path:     /affichersalle/{idevent}
+    defaults: { _controller: reservationBundle:Default:afficherSalle }
+applyCoupon:
+    path:     /applycoupon
+    defaults: { _controller: reservationBundle:Default:ApplyCoupon }
+checkout:
+    path:     /checkout/{total}
+    defaults: { _controller: reservationBundle:Default:payement }
+tickets:
+    path:     /tickets
+    defaults: { _controller: reservationBundle:Default:TicketsPasser }
+viewticket:
+    path:     /viewticket/{idres}
+    defaults: { _controller: reservationBundle:Default:viewTicket }
+ajoutavis:
+    path:     /ajoutavis
+    defaults: { _controller: reservationBundle:Default:ajouterAvis }
+chat:
+    path:     /chat/{idevent}
+    defaults: { _controller: reservationBundle:Default:chat }
+envoyerchat:
+    path:     /envoyer
+    defaults: { _controller: reservationBundle:Default:Envoyerchat }
+clubReservations:
+    path:     /clubReservations
+    defaults: { _controller: reservationBundle:Default:ReservationClub }
+

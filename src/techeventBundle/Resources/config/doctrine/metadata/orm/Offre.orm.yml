@@ -1,0 +1,41 @@
+Offre:
+    type: entity
+    table: offre
+    indexes:
+        IDX_AF86866F71F7E88B:
+            columns:
+                - event_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        descoffre:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        datedeboffre:
+            type: date
+            nullable: false
+        datefinoffre:
+            type: date
+            nullable: false
+    manyToOne:
+        event:
+            targetEntity: Event
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                event_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

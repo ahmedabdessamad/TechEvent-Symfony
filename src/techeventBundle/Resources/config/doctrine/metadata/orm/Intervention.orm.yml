@@ -1,0 +1,48 @@
+Intervention:
+    type: entity
+    table: intervention
+    indexes:
+        IDX_D11814ABD04A0F27:
+            columns:
+                - speaker_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        typeinter:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        subject:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        heureinter:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: heureInter
+    manyToOne:
+        speaker:
+            targetEntity: Speaker
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                speaker_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

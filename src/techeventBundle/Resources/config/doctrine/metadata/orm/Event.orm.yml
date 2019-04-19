@@ -1,0 +1,124 @@
+Event:
+    type: entity
+    table: event
+    indexes:
+        IDX_3BAE0AA7A76ED395:
+            columns:
+                - user_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        titre:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        description:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        affiche:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        nbrplaces:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        localisation:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        dateevent:
+            type: date
+            nullable: false
+        hdebut:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        hfin:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        prix:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        categorie:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        type:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        psilver:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        pglod:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        pdiamond:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        prixsilver:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        prixgold:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        prixdiamond:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+    manyToOne:
+        user:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

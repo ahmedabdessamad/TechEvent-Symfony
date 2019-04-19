@@ -1,0 +1,153 @@
+appel_sponsor_dossiersponsoring:
+    resource: "@AppelSponsorBundle/Resources/config/routing/dossiersponsoring.yml"
+    prefix:   /dossiersponsoring
+
+appel_sponsor_homepage:
+    path:     /anas
+    defaults: { _controller: AppelSponsorBundle:Default:index }
+appel_sponsor_index2:
+    path:     /index2
+    defaults: { _controller: AppelSponsorBundle:Default:index2 }
+appel_sponsor_ Sponsors:
+    path:     /Sponsors
+    defaults: { _controller: AppelSponsorBundle:Default:ConsulterSponsor }
+appel_sponsor_ AllSponsors:
+    path:     /AllSponsor
+    defaults: { _controller: AppelSponsorBundle:Default:AllSponsor }
+appel_sponsor_ Events:
+    path:     /Events
+    defaults: { _controller: AppelSponsorBundle:Default:ConsulterEvent }
+appel_sponsor_ Sponsor:
+    path:     /Sponsor/{id}
+    defaults: { _controller: AppelSponsorBundle:Default:Sponsor }
+appel_sponsor_index:
+    path:     /jdidi
+    defaults: { _controller: AppelSponsorBundle:AppelSponsor:index }
+appel_sponsor_invitation:
+    path:     /invitation
+    defaults: { _controller: AppelSponsorBundle:Default:Invitation }
+appel_sponsor_invitation2:
+    path:     /invitationSponsor
+    defaults: { _controller: AppelSponsorBundle:Default:InvitationSponsor }
+appel_sponsor_new:
+    path:     /iheb
+    defaults: { _controller: AppelSponsorBundle:AppelSponsor:new }
+appel_sponsor_event:
+    path:     /NewEvent
+    defaults: { _controller: AppelSponsorBundle:AppelSponsor:NewEvent }
+appel_sponsor_edit:
+    path:     /yesser/{id}
+    defaults: { _controller: AppelSponsorBundle:AppelSponsor:edit }
+appel_sponsor_show:
+    path:     /wahb/{id}
+    defaults: { _controller: AppelSponsorBundle:AppelSponsor:show }
+appel_sponsor_sponsorShow:
+    path:     /rihab/{id}
+    defaults: { _controller: AppelSponsorBundle:Default:Sponsor }
+appel_sponsor_delete:
+    path:     /joujou/{id}
+    defaults: { _controller: AppelSponsorBundle:AppelSponsor:delete }
+dossiersponsoring_index:
+    path:     /dossier
+    defaults: { _controller: AppelSponsorBundle:dossierSponsoring:index }
+dossiersponsoring_RechercherEvent:
+    path:     /RechercherEvent
+    defaults: { _controller: AppelSponsorBundle:Default:RechercherEvent }
+dossiersponsoring_show:
+    path:     /dossiershow/{id}
+    defaults: { _controller: AppelSponsorBundle:dossierSponsoring:show }
+Sponsor_signaler:
+    path:     /SignalerSpon/{id}
+    defaults: { _controller: AppelSponsorBundle:signaler:Signal }
+pdf:
+    path:     /pdf/{id}
+    defaults: { _controller: AppelSponsorBundle:dossierSponsoring:pdf }
+    methods:  [GET, POST]
+dossiersponsoring_edit:
+    path:     /dossieredit/{id}
+    defaults: { _controller: AppelSponsorBundle:dossierSponsoring:edit }
+dossiersponsoring_new:
+    path:     /dossiernew
+    defaults: { _controller: AppelSponsorBundle:dossierSponsoring:new }
+dossiersponsoring_delete:
+    path:     /dossierdelete/{id}
+    defaults: { _controller: AppelSponsorBundle:dossierSponsoring:delete}
+
+event_index:
+    path:     /event/
+    defaults: { _controller: "AppelSponsorBundle:Event:index" }
+    methods:  GET
+
+event_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppelSponsorBundle:Event:show" }
+    methods:  GET
+
+event_new:
+    path:     /event/new
+    defaults: { _controller: "AppelSponsorBundle:Event:new" }
+    methods:  [GET, POST]
+
+event_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppelSponsorBundle:Event:edit" }
+    methods:  [GET, POST]
+
+event_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppelSponsorBundle:Event:delete" }
+    methods:  DELETE
+RechercherEvent:
+    path:     /event/recherche
+    defaults: { _controller: "AppelSponsorBundle:Event:recherche" }
+    methods:  [GET, POST]
+RechercherSponsor:
+    path:     /Sponsor/recherche
+    defaults: { _controller: "AppelSponsorBundle:Event:recherchespon" }
+    methods:  [GET, POST]
+dossiersponsoring_RechercherSponsor:
+    path:     /RechercherSponsor
+    defaults: { _controller: AppelSponsorBundle:Default:RechercherSponsor }
+signialer_index:
+    path:     /signalerall
+    defaults: { _controller: AppelSponsorBundle:signaler:index }
+AllEventbyprixdesc:
+    path: /Alleventbyprixdesc
+    defaults: { _controller: AppelSponsorBundle:Event:AllEventbyprixdesc }
+AllEventbyprixdasec:
+    path: /Alleventbyprixasec
+    defaults: { _controller: AppelSponsorBundle:Event:AllEventbyprixasec }
+AllEventbyTitre:
+    path: /AllEventbyTitre
+    defaults: { _controller: AppelSponsorBundle:Event:AllEventbyTitre }
+AllEventbyDate:
+    path: /AllEventbyDate
+    defaults: { _controller: AppelSponsorBundle:Event:AllEventbyDate }
+AllSponsorbyTitre:
+    path: /AllSponsorbyTitre
+    defaults: { _controller: AppelSponsorBundle:Event:AllSponsorbyTitre }
+
+AllSponsorbyDate:
+    path: /AllSponsorbyDate
+    defaults: { _controller: AppelSponsorBundle:Event:AllSponsorbyDate }
+
+statestiquesssssss:
+    path: /stat
+    defaults: { _controller: AppelSponsorBundle:Event:stat }
+
+dossiersponsoring_show1:
+    path:     /dossiershow/{id}
+    defaults: { _controller: AppelSponsorBundle:dossierSponsoring:visual }
+rechSponsor:
+    path:     /rechSpon
+    defaults: { _controller: AppelSponsorBundle:Default:rech }
+insertDemandeSponsorSilverAction:
+    path:     /insertDemandeSponsorSilver/{id}/{prix}
+    defaults: { _controller: AppelSponsorBundle:dossierSponsoring:insertDemandeSponsorSilver }
+DeleteInvitation:
+    path:     /DeleteInvitation/{id}
+    defaults: { _controller: AppelSponsorBundle:Default:DeleteInvitation }
+AccepterInvitation:
+    path:     /AccepterInvitation/{id}
+    defaults: { _controller: AppelSponsorBundle:Default:AccepterInvitation }
+

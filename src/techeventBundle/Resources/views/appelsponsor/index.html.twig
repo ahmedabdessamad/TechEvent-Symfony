@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Appelsponsors list</h1>
+
+    <table class="table table-hover col-10 offset-1">
+        <thead>
+            <tr>
+
+                <th>Role</th>
+                <th>Confirmation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appelSponsor in appelSponsors %}
+            <tr>
+                <td>{{ appelSponsor.role }}</td>
+                <td>{{ appelSponsor.confirmation }}</td>
+                <td>
+                    <ul class="align-content-center">
+
+                            <a class="btn btn-info" href="{{ path('appelsponsor_show', { 'id': appelSponsor.id }) }}">show</a>
+
+                            <a class="btn btn-success" href="{{ path('appelsponsor_edit', { 'id': appelSponsor.id }) }}">edit</a>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('appelsponsor_new') }}">Create a new appelSponsor</a>
+        </li>
+    </ul>
+{% endblock %}

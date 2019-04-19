@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Appelsponsor</h1>
+
+    <table CLASS="table table-hover col-10 offset-1" id="myTable">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ appelSponsor.id }}</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>{{ appelSponsor.role }}</td>
+            </tr>
+            <tr>
+                <th>Confirmation</th>
+                <td>{{ appelSponsor.confirmation }}</td>
+            </tr>
+            <tr>
+                <th>Cout</th>
+                <td>{{ appelSponsor.prix }}</td>
+            </tr>
+            <tr>
+                <th>Event</th>
+                <td>{{ appelSponsor.nomevent }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ appelSponsor.dateevent }}</td>
+            </tr>
+            <tr>
+                <th>Sponsor</th>
+                <td>{{ appelSponsor.nomsponsor }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+
+            <a href="{{ path('appel_sponsor_index') }}" class="btn btn-primary">Back to the list</a>
+
+            <a href="{{ path('appel_sponsor_edit', { 'id': appelSponsor.id }) }}" class="btn btn-primary" >Edit</a>
+
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-primary">
+            {{ form_end(delete_form) }}
+
+    </ul>
+{% endblock %}

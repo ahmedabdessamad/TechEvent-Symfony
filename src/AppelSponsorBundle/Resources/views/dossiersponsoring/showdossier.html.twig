@@ -1,0 +1,189 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .columns {
+            float: left;
+            width: 33.3%;
+            padding: 8px;
+        }
+
+        .price {
+            list-style-type: none;
+            border: 1px solid #eee;
+            margin: 0;
+            padding: 0;
+            -webkit-transition: 0.3s;
+            transition: 0.3s;
+        }
+
+        .price:hover {
+            box-shadow: 0 20px 20px 0 rgba(0,0,0,0.5)
+        }
+
+        .price .header {
+
+            background: linear-gradient(45deg,  rgba(223,182,103,1) 0%,rgba(249,243,232,1) 56%,rgba(231,192,116,1) 96%);
+            color: white;
+            font-size: 25px;
+        }
+        .price .header1 {
+
+            background: linear-gradient(45deg,  rgba(160,160,160,1) 0%,rgba(232,232,232,1) 56%);
+            color: white;
+            font-size: 25px;
+        }
+        .price .header2 {
+            background: linear-gradient(45deg,  rgba(242,215,12,1) 0%,rgba(255,255,255,1) 56%,rgba(252,235,0,1) 96%);
+            color: white;
+            font-size: 25px;
+        }
+
+        .price li {
+            border-bottom: 1px solid #eee;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .price .grey {
+            background-color: #eee;
+            font-size: 20px;
+        }
+
+        .button1 {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .columns {
+                width: 100%;
+            }
+        }
+        .button {
+            border-radius: 4px;
+            background-color: DodgerBlue;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 18px;
+            padding: 10px;
+            width: 100px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+    </style>
+    <h1>Dossiersponsoring</h1>
+    <title>W3.CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
+    <div class="w3-container">
+
+        <div class="w3-panel w3-win8-">
+
+            {% for d in dossierSponsoring %}
+            <a href="{{ path('pdf',{ 'id': d.id }) }}" class="btn btn-outline-primary text-uppercase">
+                <i class="fa fa-file-pdf-o"></i> PDF </a>
+            <h2>{{ d.nomevent }}</h2>
+            <p>{{ d.descreptionevent }}</p>
+
+            <div class="coin bronze">
+                <div class="columns">
+                    <ul class="price">
+                        <li class="header">Pack Pronze</li>
+                        <li class="grey">{{ d.prixSilver }} DT</li>
+                        <li>{{ d.packSilver }}</li>
+
+                        <li class="grey"><a href="{{ path('insertDemandeSponsorSilverAction',{ id: d.id , prix: d.prixSilver }) }}" class="button1">Envoyer Pack 1</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="coin bronze">
+                <div class="columns">
+                    <ul class="price">
+                        <li class="header1" style="background-color:#4CAF50">Pack Silver</li>
+                        <li class="grey">{{ d.prixGold }} DT</li>
+                        <li>{{ d.packGold }}</li>
+
+                        <li class="grey"><a href="{{ path('insertDemandeSponsorSilverAction',{ id: d.id , prix: d.prixGold }) }}" class="button1">Envoyer Pack 2</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="coin bronze">
+                <div class="columns">
+                    <ul class="price">
+                        <li class="header2">Pack Gold</li>
+                        <li class="grey">{{ d.prixDiamond }} DT</li>
+                        <li>{{ d.packDiamond }}</li>
+
+                        <li class="grey"><a href="{{ path('insertDemandeSponsorSilverAction',{ id: d.id , prix: d.prixDiamond }) }}" class="button1">Envoyer Pack 3</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <ul>
+        <center>  <a class="button" href="{{ path('appel_sponsor_ Events') }}"><span>Back to  All Events </span></a></center>
+
+
+            {#<a href="{{ path('dossiersponsoring_edit', { 'id': dossierSponsoring.id }) }}" class="btn btn-primary" >Edit</a>#}
+
+
+            {#{{ form_start(delete_form) }}#}
+                {#<input type="submit" value="Delete" class="btn btn-danger">#}
+            {#{{ form_end(delete_form) }}#}
+
+    </ul>
+
+
+    <script>
+        document.getElementById("dinamic-content").innerHTML = 'This string has been appended using javascript';
+
+        // Draw circle on canvas
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(100,75,50,0,2*Math.PI);
+        ctx.stroke();
+    </script>
+{% endblock %}

@@ -1,0 +1,43 @@
+Article:
+    type: entity
+    table: article
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        titre:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        description:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        photo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        heurepubl:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+        categorie:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

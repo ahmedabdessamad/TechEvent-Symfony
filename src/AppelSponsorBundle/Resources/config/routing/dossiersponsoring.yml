@@ -1,0 +1,24 @@
+dossiersponsoring_index:
+    path:     /
+    defaults: { _controller: "AppelSponsorBundle:dossierSponsoring:index" }
+    methods:  GET
+
+dossiersponsoring_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppelSponsorBundle:dossierSponsoring:show" }
+    methods:  GET
+
+dossiersponsoring_new:
+    path:     /new
+    defaults: { _controller: "AppelSponsorBundle:dossierSponsoring:new" }
+    methods:  [GET, POST]
+
+dossiersponsoring_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppelSponsorBundle:dossierSponsoring:edit" }
+    methods:  [GET, POST]
+
+dossiersponsoring_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppelSponsorBundle:dossierSponsoring:delete" }
+    methods:  DELETE

@@ -1,0 +1,34 @@
+Panier:
+    type: entity
+    table: panier
+    indexes:
+        userid:
+            columns:
+                - userid
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        total:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+    manyToOne:
+        userid:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                userid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

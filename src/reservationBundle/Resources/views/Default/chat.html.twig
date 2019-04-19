@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <style>
+        #receiverid {
+            width: 0px;
+            height: 0px;
+        }
+        #idevent {
+            width: 0px;
+            height: 0px;
+        }
+    </style>
+    <!-- Comments-->
+    <section class="padding-top-3x" id="comments">
+        <h3 class="padding-bottom-1x">Messages {{ organisateur}}</h3>
+        <!-- Comment-->
+            <div class="alert alert-success alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-help"></i>&nbsp;&nbsp;<strong>Success alert:</strong> Deserunt praesentium laboriosam quaerat mollitia.</div>
+        <!-- Comment-->
+        <div class="comment">
+            <div class="comment-author-ava"><img src="img/reviews/03.jpg" alt="Comment author"></div>
+            {% for messages in messages %}
+            <div class="comment-body">
+                <p class="comment-text">{{ messages.content }}</p>
+                <div class="comment-footer">
+                    <div class="column"><span class="comment-meta">5 days ago</span></div>
+                    {% if (app.user.username) == (messages.idreceiver)  %}
+                        <div class="column"><a class="reply-link" href="#"><i class="icon-reply"></i>{{ organisateur }}</a></div>
+                    {% endif %}
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Comment Form-->
+    <h4 class="padding-top-2x padding-bottom-1x">Leave a Comment</h4>
+    <form class="row" method="post"   action="{{path('envoyerchat')}}">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="comment-text">Message</label>
+                <textarea class="form-control form-control-rounded" rows="7" id="comment-text" placeholder="Write your message here..." required name="content"></textarea>
+                <input value="{{ organisateur.id }}" name="receiverid" id="receiverid">
+                <input value="{{ idevent }}" id="idevent" name="idevent">
+            </div>
+        </div>
+        <div class="col-12 text-right">
+            <button onclick="sendMessage({{ organisateur.id }})" class="btn btn-pill btn-primary" type="submit">SEND MESSAGE</button>
+        </div>
+
+    </form>
+    </div>
+
+   <script>
+    function sendMessage() {
+        alert(document.getElementById('receiverid').value);
+    }
+   </script>
+{% endblock %}

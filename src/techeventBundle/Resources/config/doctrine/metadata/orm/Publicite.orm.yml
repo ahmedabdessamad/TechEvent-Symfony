@@ -1,0 +1,35 @@
+Publicite:
+    type: entity
+    table: publicite
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        contenuepub:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: contenuePub
+        photopub:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: photoPub
+        emplacementpub:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: emplacementPub
+    lifecycleCallbacks: {  }

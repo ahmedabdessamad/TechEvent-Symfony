@@ -1,0 +1,141 @@
+{% extends 'clubbase.html.twig' %}
+{% block content %}
+    <img src="{{ asset('js/brbr.jpg') }}">
+    <center><h1> </h1></center>
+
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <h2>Search Article !!</h2>
+
+            <div class="sidebar-search">
+
+                <div class="input-group custom-search-form">
+
+                    <input type="text" id="search" class="form-control" placeholder="Search here">
+                </div>
+                <!-- /input-group -->
+            </div>
+            <ul class="nav" id="side-menu">
+                <li>
+                    <a href="#"> Entities<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level" id="entitiesNav">
+                    </ul>
+                </li>
+            </ul><br><br><br><br>
+
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    var searchRequest = null;
+                    $("#search").keyup(function() {
+                        var minlength = 1;
+                        var that = this;
+                        var value = $(this).val();
+                        var entitySelector = $("#entitiesNav").html('');
+                        if (value.length >= minlength ) {
+                            if (searchRequest != null)
+                                searchRequest.abort();
+                            searchRequest = $.ajax({
+                                type: "GET",
+                                url: "{{ path('ajax_search') }}",
+                                data: {
+                                    'q' : value
+                                },
+                                dataType: "text",
+                                success: function(msg){
+                                    //we need to check if the value is the same
+                                    if (value===$(that).val()) {
+                                        var result = JSON.parse(msg);
+                                        $.each(result, function(key, arr) {
+                                            $.each(arr, function(id, value) {
+                                                if (key === 'posts') {
+                                                    if (id !== 'error') {
+                                                        console.log(value[1]);
+                                                        entitySelector.append('<li><b>'+value[1]+'</b><a href="/detailedpost/'+id+'">'+'<img src="/uploads/post/'+value[0]+'" style="width: 50px; height: 50px"/>'+'</a></li>');
+                                                    } else {
+                                                        entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            </script>
+
+            <div class="post-container">
+                <div class="row">
+
+
+                    <section class="featured section-padding">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <div class="heading">
+                                        <center><h1 class="section-title">Actualite</h1></center>
+                                        <h4 class="sub-title"></h4>
+                                    </div>
+                                </div>
+
+                                {% for posts in posts %}
+
+                                <p><div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <div class="featured-box">
+                                            <figure>
+                                                <a href="{{ path('detailed_post',{'id': posts.id}) }}"><center><img class="img-fluid" src="{{ asset('uploads/post/' ~ posts.photo) }}" alt=""></center></a>
+                                            </figure>
+                                            <div class="content-wrapper">
+                                                <div class="feature-content">
+                                                    <h4><a href="{{ path('detailed_post',{'id': posts.id}) }}"><center>{{ posts.titre }}</center></a></h4>
+                                <p class="listing-tagline">{{ posts.description|trim }}</p>
+                                <div class="meta-tag">
+                                    <div class="listing-review">
+                                        <span class="review-avg"></span>
+
+                                    </div>
+                                    <div class="user-name">
+                                        <a href="#"><i class="lni-user"></i></a>
+                                    </div>
+                                    <div class="listing-category">
+                                        <a href="#"><i class="lni-alarm-clock"></i><center>{{ posts.heurepubl|date() }}</center> </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listing-bottom clearfix">
+                                <div class="btn-group">
+
+                                    <a href="{{ path('update_post',{'id': posts.id}) }}"><button type="button" class="btn btn-sm btn-outline-info">LinkedIn</button></a>
+                                    <a href="{{ path('delete_post',{'id': posts.id}) }}"><button type="button" class="btn btn-sm btn-outline-danger">GooGle</button></a>
+                                    <a href="{{ path('detailed_post',{'id': posts.id}) }}"><button type="button" class="btn btn-sm btn-outline-primary">View</button></a>
+
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </p>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    </section>
+
+
+
+    </div>
+
+    </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

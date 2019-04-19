@@ -1,0 +1,61 @@
+{% extends 'adminbase.html.twig' %}
+{% block content %}
+
+    <div class="table-responsiv">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Titre</th>
+            <th>description</th>
+            <th>Localisation</th>
+            <th>Consulter</th>
+            <th>Accepter</th>
+            <th>Refuser</th>
+            <th>Statut</th>
+
+
+        </tr>
+        </thead>
+        {% for event in events %}
+        <tbody id="myTable">
+        <tr>
+
+            <th scope="row">#</th>
+            <td>{{ event.titre }}</td>
+            <td>{{ event.description }}</td>
+            <td>{{ event.localisation }}</td>
+
+            <td><a class="btn btn-outline-info" href={{ path ('AffEventClub',{'id': event.id} ) }}>Consulter</a>
+
+
+            <td><a class="btn btn-outline-success" href={{ path ('accepterevent',{'id': event.id} ) }}>accepter</a>
+            </td>
+            <td><a class="btn btn-outline-danger" href={{ path ('refuserevent',{'id': event.id} ) }}>Refuser</a>
+            </td>
+            {% if event.validation == 0 %}
+            <td><a class="btn btn-warning" > EN attendant</a>
+                {% endif %}
+                {% if event.validation == 1 %}
+            <td><a class="btn btn-success" > Accepter </a>
+                {% endif %}
+
+                {% if event.validation == 2 %}
+            <td><a class="btn btn-danger" >Réfuse</a>
+                {% endif %}
+
+
+
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    </div>
+
+    <div class="navigation text-center">
+        {{ knp_pagination_render(events) }}
+
+
+    </div>
+
+{% endblock %}

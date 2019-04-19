@@ -1,0 +1,92 @@
+{% extends 'clubbase.html.twig' %}
+{% block content %}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.8.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br>
+    <div class="form-group row flex-v-center"  >
+
+
+        <ul class="nav nav-pills " role="tablist">
+            <li class="nav-item"><a class="nav-link active" href={{ path ('event') }}  >Ajouter Evenement</a></li>
+        </ul>
+    </div>
+    
+    <!------ Include the above in your HEAD tag ---------->
+    <hr class="margin-bottom-1x">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+
+                <th>#</th>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Localisation</th>
+                <th>Consulter</th>
+                <th>Utilisateurs Interesser</th>
+                <th>Statut</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+            <tbody id="myTable">
+            <tr>
+
+                <th scope="row">#</th>
+                <td>{{ event.titre }}</td>
+                <td>{{ event.dateevent }}</td>
+                <td>{{ event.localisation }}</td>
+                <td><a class="btn btn-outline-info" href={{ path ('AffEventClub',{'id': event.id} ) }}>Consulter</a>
+                    {% if event.validation == 1 %}
+                <td><a class="btn btn-outline-success" href={{ path ('allusersinteresser',{'id': event.id} ) }}>Utilisateurs Interesser</a>
+                    {% endif %}
+                    {% if event.validation == 0 %}
+                <td><a class="btn btn-outline-warning" >Utilisateurs Interesser</a>
+                    {% endif %}
+                    {% if event.validation == 2 %}
+                <td><a class="btn btn-outline-danger" >Utilisateurs Interesser</a>
+                {% endif %}
+                    {% if event.validation == 0 %}
+                <td><a class="btn btn-warning" > EN attendant</a>
+                    {% endif %}
+                    {% if event.validation == 1 %}
+                <td><a class="btn btn-success" > accepter </a>
+                    {% endif %}
+
+                    {% if event.validation == 2 %}
+                <td><a class="btn btn-danger" >Réfuse</a>
+                    {% endif %}
+
+                </td>
+            </tr>
+            </tbody>
+
+
+
+
+            {% endfor %}
+            </tbody>
+        </table>
+    <div class="navigation text-center">
+        {{ knp_pagination_render(events) }}
+
+
+    </div>
+
+        <script>
+            $(document).ready(function(){
+                $("#myInput").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+{% endblock %}

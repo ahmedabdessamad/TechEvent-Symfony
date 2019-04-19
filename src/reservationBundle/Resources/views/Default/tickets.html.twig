@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="toolbar">
+        <div class="inner">
+            <div class="tools">
+                <div class="search"><i class="icon-search"></i></div>
+                <div class="account"><a href="account-orders.html"></a><i class="icon-head"></i>
+                    <ul class="toolbar-dropdown">
+                        <li class="sub-menu-user">
+                            <div class="user-ava"><img src="img/account/user-ava-sm.jpg" alt="Daniel Adams">
+                            </div>
+                            <div class="user-info">
+                                <h6 class="user-name">Daniel Adams</h6><span class="text-xs text-muted">290 Reward points</span>
+                            </div>
+                        </li>
+                        <li><a href="account-profile.html">My Profile</a></li>
+                        <li><a href="account-orders.html">Orders List</a></li>
+                        <li><a href="account-wishlist.html">Wishlist</a></li>
+                        <li class="sub-menu-separator"></li>
+                        <li><a href="#"> <i class="icon-unlock"></i>Logout</a></li>
+                    </ul>
+                </div>
+                <div class="cart"><a href="cart.html"></a><i class="icon-bag"></i><span class="count">3</span><span class="subtotal">$289.68</span>
+                    <div class="toolbar-dropdown">
+                        <div class="dropdown-product-item"><span class="dropdown-product-remove"><i class="icon-cross"></i></span><a class="dropdown-product-thumb" href="shop-single.html"><img src="img/cart-dropdown/01.jpg" alt="Product"></a>
+                            <div class="dropdown-product-info"><a class="dropdown-product-title" href="shop-single.html">Unionbay Park</a><span class="dropdown-product-details">1 x $43.90</span></div>
+                        </div>
+                        <div class="dropdown-product-item"><span class="dropdown-product-remove"><i class="icon-cross"></i></span><a class="dropdown-product-thumb" href="shop-single.html"><img src="img/cart-dropdown/02.jpg" alt="Product"></a>
+                            <div class="dropdown-product-info"><a class="dropdown-product-title" href="shop-single.html">Daily Fabric Cap</a><span class="dropdown-product-details">2 x $24.89</span></div>
+                        </div>
+                        <div class="dropdown-product-item"><span class="dropdown-product-remove"><i class="icon-cross"></i></span><a class="dropdown-product-thumb" href="shop-single.html"><img src="img/cart-dropdown/03.jpg" alt="Product"></a>
+                            <div class="dropdown-product-info"><a class="dropdown-product-title" href="shop-single.html">Haan Crossbody</a><span class="dropdown-product-details">1 x $200.00</span></div>
+                        </div>
+                        <div class="toolbar-dropdown-group">
+                            <div class="column"><span class="text-lg">Total:</span></div>
+                            <div class="column text-right"><span class="text-lg text-medium">$289.68&nbsp;</span></div>
+                        </div>
+                        <div class="toolbar-dropdown-group">
+                            <div class="column"><a class="btn btn-sm btn-block btn-secondary" href="cart.html">View Cart</a></div>
+                            <div class="column"><a class="btn btn-sm btn-block btn-success" href="checkout-address.html">Checkout</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+    <!-- Off-Canvas Wrapper-->
+    <div class="offcanvas-wrapper">
+        <!-- Page Title-->
+        <div class="page-title">
+            <div class="container">
+                <div class="column">
+                    <h1>My Tickets</h1>
+                </div>
+                <div class="column">
+                    <ul class="breadcrumbs">
+                        <li><a href="index.html">Home</a>
+                        </li>
+                        <li class="separator">&nbsp;</li>
+                        <li><a href="account-orders.html">Account</a>
+                        </li>
+                        <li class="separator">&nbsp;</li>
+                        <li>My Tickets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Page Content-->
+        <div class="container padding-bottom-3x mb-2">
+            <div class="row">
+                <div class="col-lg-4">
+                    <aside class="user-info-wrapper">
+                        <div class="user-cover" style="background-image: url(img/account/user-cover-img.jpg);">
+                            <div class="info-label" data-toggle="tooltip" title="You currently have 290 Reward Points to spend"><i class="icon-medal"></i>290 points</div>
+                        </div>
+                        <div class="user-info">
+                            <div class="user-avatar"><a class="edit-avatar" href="#"></a><img src="img/account/user-ava.jpg" alt="User"></div>
+                            <div class="user-data">
+                                <h4> {{ app.user.username }}</h4><span>Joined February 06, 2017</span>
+                            </div>
+                        </div>
+                    </aside>
+                    <nav class="list-group"><a class="list-group-item with-badge" href="account-orders.html"><i class="icon-bag"></i>Orders<span class="badge badge-primary badge-pill">6</span></a><a class="list-group-item" href="account-profile.html"><i class="icon-head"></i>Profile</a><a class="list-group-item" href="account-address.html"><i class="icon-map"></i>Addresses</a><a class="list-group-item with-badge" href="account-wishlist.html"><i class="icon-heart"></i>Wishlist<span class="badge badge-primary badge-pill">3</span></a><a class="list-group-item with-badge active" href="account-tickets.html"><i class="icon-tag"></i>My Tickets<span class="badge badge-primary badge-pill">4</span></a></nav>
+                </div>
+                <div class="col-lg-8">
+                    <div class="padding-top-2x mt-2 hidden-lg-up"></div>
+                    <div class="table-responsive">
+                        <table class="table table-hover margin-bottom-none" id="myTable">
+                            <thead>
+                            <tr>
+                            <tr>
+                                <th>Ticket id</th>
+                                <th>Date Submitted | Updated</th>
+                                <th>Type</th>
+                                <th>Seat</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {%for listeResPasser in listeResPasser%}
+                            <tr>
+                                <td><a class="text-medium navi-link" href="account-single-ticket.html">{{listeResPasser.id}}</a></td>
+                                <td>{{listeResPasser.datereservation|date('Y-m-d')}}</td>
+                                <td>{{listeResPasser.type}}</td>
+                                <td><span class="text-warning">{{listeResPasser.seat}}</span></td>
+                            </tr>
+                           {%endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr class="mb-4">
+                    <div class="text-right">
+                        <button class="btn btn-primary margin-bottom-none" data-toggle="modal" data-target="#openTicket">Submit New Ticket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+
+        var table = document.getElementById('myTable');
+
+        for(var i = 1; i < table.rows.length; i++)
+        {
+            table.rows[i].onclick = function()
+            {
+                var str = this.cells[0].innerHTML;
+                var num = parseInt(str.match(/\d+/),10)
+                window.location.href = "http://localhost/techeventsweb/web/app_dev.php/viewticket/"+num;
+            };
+        }
+
+    </script>
+
+{% endblock %}

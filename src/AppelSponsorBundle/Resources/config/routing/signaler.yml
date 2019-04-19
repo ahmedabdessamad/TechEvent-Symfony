@@ -1,0 +1,24 @@
+signaler_index:
+    path:     /
+    defaults: { _controller: "AppelSponsorBundle:Signaler:index" }
+    methods:  GET
+
+signaler_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppelSponsorBundle:Signaler:show" }
+    methods:  GET
+
+signaler_new:
+    path:     /new
+    defaults: { _controller: "AppelSponsorBundle:Signaler:new" }
+    methods:  [GET, POST]
+
+signaler_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppelSponsorBundle:Signaler:edit" }
+    methods:  [GET, POST]
+
+signaler_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppelSponsorBundle:Signaler:delete" }
+    methods:  DELETE

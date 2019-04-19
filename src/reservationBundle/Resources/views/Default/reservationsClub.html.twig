@@ -1,0 +1,84 @@
+{% extends 'adminbase.html.twig' %}
+{% block content %}
+    <style>
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+    <table id="customers">
+        <tr>
+            <th>Reservation key</th>
+            <th>Date Reservation</th>
+            <th>Quantite</th>
+        </tr>
+        {% for  r in  listeReservationsClub %}
+            <tr>
+                <td>{{ r.id }}</td>
+                <td>{{ r.dateReservation  | date('j. F Y')}}</td>
+                <td>{{ r.quantite }}</td>
+            </tr>
+
+        {% endfor %}
+    </table>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <script>
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Statstiques Reservations de mes évenements"
+                },
+                legend:{
+                    cursor: "pointer",
+                    itemclick: explodePie
+                },
+                data: [{
+                    type: "pie",
+                    showInLegend: true,
+                    toolTipContent: "{name}: <strong>{y}%</strong>",
+                    indexLabel: "{name} - {y}%",
+                    dataPoints: [
+                        { y: {{ nbrA }}, name: "Seat A", exploded: true },
+                        { y: {{ nbrB }}, name: "Seat B" },
+                        { y: {{ nbrC }}, name: "Seat C" },
+                    ]
+                }]
+            });
+            chart.render();
+        }
+
+        function explodePie (e) {
+            if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+                e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+            } else {
+                e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+            }
+            e.chart.render();
+
+        }
+    </script>
+
+{% endblock %}

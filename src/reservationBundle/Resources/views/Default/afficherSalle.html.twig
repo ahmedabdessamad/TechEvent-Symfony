@@ -1,0 +1,43 @@
+{% block affichageSalle %}
+   <html>
+   <body>
+   <div id="leftSide"></div>
+
+
+   <script>
+      var numberOfFaces = '{{ total }}';
+      var nbp = '{{ nbp }}'
+      var theLeftSide = document.getElementById("leftSide");
+      generateFaces()
+      function generateFaces() { // I need to fix this function. Something is wrong.
+         for(i = 0; i < nbp; i++) {
+            var smilies = document.createElement("img");
+            smilies.src = "../../../web/img/chaiseNonReserver.png";
+
+            var top_position = Math.random() * 400;
+            top_position = Math.floor(top_position);
+            var left_position = Math.random() * 400;
+            left_position = Math.floor(left_position);
+
+            theLeftSide.style.top = top_position + "px";
+            theLeftSide.style.left = left_position + "px";
+            theLeftSide.appendChild(smilies);
+         }
+         for(i = 0; i < numberOfFaces - nbp; i++) {
+            var smilies = document.createElement("img");
+            smilies.src = "../../../web/img/chaiseReserver.png";
+
+            var top_position = Math.random() * 400;
+            top_position = Math.floor(top_position);
+            var left_position = Math.random() * 400;
+            left_position = Math.floor(left_position);
+
+            theLeftSide.style.top = top_position + "px";
+            theLeftSide.style.left = left_position + "px";
+            theLeftSide.appendChild(smilies);
+         }
+      }
+   </script>
+   </body>
+   </html>
+{% endblock %}

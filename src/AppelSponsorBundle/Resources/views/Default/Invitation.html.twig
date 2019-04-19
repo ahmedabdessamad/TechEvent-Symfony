@@ -1,0 +1,218 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        /*input[type=text] {*/
+            /*width: 130px;*/
+            /*box-sizing: border-box;*/
+            /*border: 2px solid #ccc;*/
+            /*border-radius: 4px;*/
+            /*font-size: 16px;*/
+            /*background-color: white;*/
+            /*background-image: url('searchicon.png');*/
+            /*background-position: 10px 10px;*/
+            /*background-repeat: no-repeat;*/
+            /*padding: 12px 20px 12px 40px;*/
+            /*-webkit-transition: width 0.4s ease-in-out;*/
+            /*transition: width 0.4s ease-in-out;*/
+        /*}*/
+
+        input[type=text]:focus {
+            width: 100%;
+        }
+        .fa-check {
+            color: green;
+        }
+
+        .fa-remove {
+            color: red;
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .notification {
+            background-color: #555;
+            color: white;
+            text-decoration: none;
+            padding: 15px 26px;
+            position: relative;
+            display: inline-block;
+            border-radius: 2px;
+        }
+
+        .notification:hover {
+            background: red;
+        }
+
+        .notification .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            padding: 5px 10px;
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+        }
+    </style>
+
+    <h1>Invitation Reçue : </h1>
+
+    <input class="form-control" id="myInput" type="text" placeholder="Rechercher vous Invitation">
+
+    <table CLASS="table table-hover col-10 offset-1" id="myTable">
+        <thead>
+        <tr>
+
+            <th onclick="sortTable(1)">Event</th>
+            <th onclick="sortTable(2)">Cout</th>
+
+            <th onclick="sortTable(3)" >Date</th>
+            <th onclick="sortTable(0)" >Sponsor</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for appelSponsor in appelSponsors %}
+            <tr>
+                <td>{{ appelSponsor.nomevent}}</td>
+
+                {#<td><i class="fa fa-remove"></i></td>#}
+                {#<td><i class="fa fa-check"></i></td>#}
+
+                <td>{{ appelSponsor.prix }}</td>
+
+
+                <td>{{ appelSponsor.dateevent }}</td>
+                <td>{{ appelSponsor.nomsponsor }}</td>
+                <td>
+
+                    {% if appelSponsor.confirmation == "oui" %}
+                        <a href="#" disabled="TRUE" class="btn btn-success" >Accepter </a>
+                    {% else %}
+
+                        <a href="{{ path('AccepterInvitation', { 'id': appelSponsor.id }) }}" class="btn btn-success">Accepter </a>
+
+                    {% endif %}
+
+
+                        <a href="{{ path('DeleteInvitation', { 'id': appelSponsor.id }) }}" class="btn btn-danger" >Refuser </a>
+
+
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <div id="5" class=" pagination text-center">
+        {{ knp_pagination_render(appelSponsors) }}
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+        function sortTable() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("myTable");
+            switching = true;
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[0];
+                    y = rows[i + 1].getElementsByTagName("TD")[0];
+                    //check if the two rows should switch place:
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("myTable");
+            switching = true;
+            //Set the sorting direction to ascending:
+            dir = "asc";
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    /*check if the two rows should switch place,
+                    based on the direction, asc or desc:*/
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch= true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    //Each time a switch is done, increase this count by 1:
+                    switchcount ++;
+                } else {
+                    /*If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again.*/
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+{% endblock %}

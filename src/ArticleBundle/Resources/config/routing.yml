@@ -1,0 +1,38 @@
+article_homepage:
+    path:     /
+    defaults: { _controller: ArticleBundle:Default:index }
+Create_post:
+    path:     /addpost
+    defaults: { _controller: ArticleBundle:Article:add }
+list_post:
+    path:     /postslist
+    defaults: { _controller: ArticleBundle:Article:listpost }
+list_post2:
+    path:     /postslist
+    defaults: { _controller: ArticleBundle:Article:listpost }
+
+update_post:
+    path:     /updatepost/{id}
+    defaults: { _controller: ArticleBundle:Article:updatepost }
+
+delete_post:
+    path:     /deletepost/{id}
+    defaults: { _controller: ArticleBundle:Article:deletepost }
+
+
+detailed_post:
+    path:     /detailedpost/{id}
+    defaults: { _controller: ArticleBundle:Article:showdetailed }
+
+ajax_search:
+    path:     /search
+    defaults: { _controller: ArticleBundle:Article:search }
+list_postadmin:
+    path:     /postslistad
+    defaults: { _controller: ArticleBundle:Article:listpostadmin }
+add_comment:
+    path:     /addcomment
+    defaults: { _controller: ArticleBundle:Article:addComment }
+delete_comment:
+    path:     /deletecomment/{id}
+    defaults: { _controller: ArticleBundle:Article:deleteComment }

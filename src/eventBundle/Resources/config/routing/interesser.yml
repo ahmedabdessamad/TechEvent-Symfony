@@ -1,0 +1,24 @@
+interesser_index:
+    path:     /
+    defaults: { _controller: "eventBundle:interesser:index" }
+    methods:  GET
+
+interesser_show:
+    path:     /{id}/show
+    defaults: { _controller: "eventBundle:interesser:show" }
+    methods:  GET
+
+interesser_new:
+    path:     /new
+    defaults: { _controller: "eventBundle:interesser:new" }
+    methods:  [GET, POST]
+
+interesser_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "eventBundle:interesser:edit" }
+    methods:  [GET, POST]
+
+interesser_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "eventBundle:interesser:delete" }
+    methods:  DELETE

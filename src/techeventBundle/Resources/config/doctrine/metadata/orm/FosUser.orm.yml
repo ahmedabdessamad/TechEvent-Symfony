@@ -1,0 +1,166 @@
+FosUser:
+    type: entity
+    table: fos_user
+    indexes:
+        IDX_957A647914013572:
+            columns:
+                - copon_id
+    uniqueConstraints:
+        UNIQ_957A6479A0D96FBF:
+            columns:
+                - email_canonical
+        UNIQ_957A647992FC23A8:
+            columns:
+                - username_canonical
+        UNIQ_957A6479C05FB297:
+            columns:
+                - confirmation_token
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: true
+            length: 180
+            options:
+                fixed: false
+        usernameCanonical:
+            type: string
+            nullable: true
+            length: 180
+            options:
+                fixed: false
+            column: username_canonical
+        email:
+            type: string
+            nullable: false
+            length: 180
+            options:
+                fixed: false
+        emailCanonical:
+            type: string
+            nullable: true
+            length: 180
+            options:
+                fixed: false
+            column: email_canonical
+        enabled:
+            type: boolean
+            nullable: true
+        salt:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        lastLogin:
+            type: datetime
+            nullable: true
+            column: last_login
+        confirmationToken:
+            type: string
+            nullable: true
+            length: 180
+            options:
+                fixed: false
+            column: confirmation_token
+        passwordRequestedAt:
+            type: datetime
+            nullable: true
+            column: password_requested_at
+        roles:
+            type: array
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        prenom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        tel:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+        age:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        sexe:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        fonction:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        address:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        categorie:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        type:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        description:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        role:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    manyToOne:
+        copon:
+            targetEntity: Coupon
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                copon_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

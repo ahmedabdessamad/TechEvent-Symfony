@@ -1,0 +1,28 @@
+{% extends 'adminbase.html.twig' %}
+{% block content %}
+    <div class="container">
+        <br><br>
+        <center>
+
+            <h3>Ajouter votre Article</h3>
+
+            <div class="well">
+
+
+                {{ form_start(Form,{'attr':{'class':'form-horizental'}}) }}
+                <br>
+                {{ form_row(Form.titre,{'attr':{'class':'form-control'}}) }}
+                <br>
+                {{ form_row(Form.Description,{'attr':{'class':'form-control'}}) }}
+                <br>
+                {{ form_row(Form.Photo,{'attr':{'class':'form-control'}}) }}
+                <br>
+                {{ form_row(Form.Categorie,{'attr':{'class':'form-control'}}) }}
+                <br><br>
+                {{ form_row(Form.Publier,{'attr':{'class':'form-control'}}) }}
+
+                {{ form_end(Form) }}
+            </div>
+    </div>
+    </center>
+{% endblock %}

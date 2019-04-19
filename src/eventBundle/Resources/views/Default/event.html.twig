@@ -1,0 +1,125 @@
+{% extends 'clubbase.html.twig' %}
+{% block content %}
+
+
+    <form class="needs-validation"   method="POST" action="{{ path('Ajouterevent') }}" >
+        <hr class="margin-bottom-1x">
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="text-input">Titre</label>
+            <div class="col-10">
+                <input class="form-control" type="text" id="text-input"  name = "titre" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="textarea-input"> Description</label>
+            <div class="col-10">
+                <textarea class="form-control" id="textarea-input"  name ="description" rows="5" required></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="file-input">Affiche</label>
+            <div class="col-10">
+                <div class="custom-file">
+                    <input class="custom-file-input" type="file"  name="affiche"  id="file-input">
+                    <label class="custom-file-label" for="file-input" >Choose file...</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="number-input">Nombre de Place</label>
+            <div class="col-10">
+                <input class="form-control" type="number" id="number-input" name="nbrpalce" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="select-input">Lieu</label>
+            <div class="col-10">
+                <select class="form-control" id="select-input" name="localisation" required>
+                    <option>Choose City</option>
+                    <option>Tunis</option>
+                    <option>Sfax</option>
+                    <option>Sousse</option>
+                    <option>Bizerte</option>
+                    <option>Gabès</option>
+                    <option>Ariana</option>
+                    <option>Gafsa</option>
+                    <option>Monastir</option>
+                    <option>Ben Arous</option>
+                    <option>Kasserine</option>
+                    <option>Médenine</option>
+                    <option>Nabeul</option>
+                    <option>Tataouine</option>
+                    <option>Béja</option>
+                    <option>Le Kef</option>
+                    <option>Mahdia</option>
+                    <option>Sidi Bouzid</option>
+                    <option>Jendouba</option>
+                    <option>Tozeur</option>
+                    <option>La Manouba</option>
+                    <option>Siliana</option>
+                    <option>Zaghouan</option>
+                    <option>Kébili</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="date-input">Date</label>
+            <div class="col-10">
+                <input class="form-control" type="date" id="date-input" value="2017-06-13" name="dateevent" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="time-input">Heure de Début </label>
+            <div class="col-10">
+                <input class="form-control" type="time" id="time-input" value="14:49:00" name="hdebut" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="time-input">Heure de Fin</label>
+            <div class="col-10">
+                <input class="form-control" type="time" id="time-input" value="14:45:00" name="hfin" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="number-input">Prix</label>
+            <div class="col-10">
+                <input class="form-control" type="number" id="number-input" name="prix" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="select-input">Categories</label>
+            <div class="col-10">
+                <select class="form-control" id="select-input" name="categories" required>
+                    <option>Choisir Categories d'event</option>
+                    <option>BI</option>
+                    <option>Cloud</option>
+                    <option>data Science </option>
+                    <option>genie Logiciel</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="select-input">Type</label>
+            <div class="col-10">
+                <select class="form-control" id="select-input" name="type" required>
+                    <option>Choisir  Type d'event</option>
+                    <option>Competition</option>
+                    <option>Work Shop</option>
+                    <option>Event Privé </option>
+                    <option>Marketing</option>
+
+                </select>
+            </div>
+        </div>
+
+
+        <button  class="btn btn-primary" type="submit" > Ajouter </button>
+
+    </form>
+
+
+
+
+{% endblock %}

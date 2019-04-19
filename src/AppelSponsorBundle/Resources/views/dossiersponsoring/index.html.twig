@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Dossiersponsorings list</h1>
+
+    <table  CLASS="table table-hover col-10 offset-1" id="myTable">
+        <thead>
+            <tr>
+                <th>nomevent</th>
+                <th>descreptione</th>
+                <th>packSilver</th>
+                <th>prixSilver</th>
+                <th>packGold</th>
+                <th>prixGold</th>
+                <th>packDiamond</th>
+                <th>prixDiamond</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dossierSponsoring in dossierSponsorings %}
+            <tr>
+
+                <td> {{ dossierSponsoring.nomevent }}</td>
+                <td>{{ dossierSponsoring.descreptionevent }}</td>
+                <td>{{ dossierSponsoring.packSilver }}</td>
+                <td>{{ dossierSponsoring.prixSilver }}</td>
+                <td>{{ dossierSponsoring.packGold }}</td>
+                <td>{{ dossierSponsoring.prixGold }}</td>
+                <td>{{ dossierSponsoring.packDiamond }}</td>
+                <td>{{ dossierSponsoring.prixDiamond }}</td>
+                <td>
+                    <ul>
+
+                            <a href="{{ path('dossiersponsoring_show', { 'id': dossierSponsoring.id }) }}" class="btn btn-primary">show</a>
+
+                            <a href="{{ path('dossiersponsoring_edit', { 'id': dossierSponsoring.id }) }}" class="btn btn-primary">edit</a>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <center>
+            <a href="{{ path('dossiersponsoring_new') }}" class="btn btn-success">Create a new dossierSponsoring</a>
+        </center>
+    </ul>
+{% endblock %}

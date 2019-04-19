@@ -1,0 +1,6 @@
+techevent_index:
+    path:     /index
+    defaults: { _controller: techeventBundle:techevent:index }
+techevent_events:
+    path:     /events
+    defaults: { _controller: techeventBundle:techevent:viewEvent}

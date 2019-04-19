@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.8.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br>
+    <a class="btn btn-primary" href={{ path ('Allinetereser') }}>Liste Interesser</a>
+
+    <br>
+    <hr class="margin-bottom-1x">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Localisation</th>
+                <th>Consulter</th>
+                <th>Supprimer</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+
+
+            <div class="modal fade" id="modalDefault" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Confirmation du suppression</h4>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <p> Voulez vous supprimer l'événement " {{ event.titre }}" de la liste ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-outline-secondary btn-sm" type="button" data-dismiss="modal">Close</button>
+                            <a class="btn btn-primary btn-sm"  href={{ path ('DeleteEventinteresser',{'id': event.id} ) }} type="button">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <tbody id="myTable">
+            <tr>
+
+                <th scope="row">#</th>
+                <td>{{ event.titre }}</td>
+                <td>{{ event.dateevent }}</td>
+                <td>{{ event.localisation }}</td>
+                <td><a class="btn btn-outline-info" href={{ path ('AffEvent',{'id': event.id , cat :event.categorie} ) }}>Consulter</a></td>
+                <td><a class="btn btn-danger"  data-toggle="modal"  data-target="#modalDefault"  >Supprimer</a></td>
+
+
+                </td>
+            </tr>
+
+            </tbody>
+
+
+
+            {% endfor %}
+            </tbody>
+        </table>
+    <div class="navigation text-center">
+        {{ knp_pagination_render(events) }}
+
+
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+{% endblock %}

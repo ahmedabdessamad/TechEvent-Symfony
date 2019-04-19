@@ -1,0 +1,56 @@
+Reservations:
+    type: entity
+    table: reservations
+    indexes:
+        IDX_4DA239A76ED395:
+            columns:
+                - user_id
+        IDX_4DA23971F7E88B:
+            columns:
+                - event_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: user_id
+        eventId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: event_id
+        dateres:
+            type: date
+            nullable: false
+            column: DateRes
+        qte:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: Qte
+        typerese:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: TypeRese
+        seat:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }
